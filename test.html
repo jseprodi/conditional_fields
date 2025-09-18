@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Conditional Fields</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>">
+    <link rel="stylesheet" href="node_modules/@kontent-ai/stylekit/styles/styles.css">
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid var(--light-grey); border-radius: 16px; }
+        .success { color: var(--green); }
+        .error { color: var(--red); }
+    </style>
+</head>
+<body>
+    <h1>Conditional Fields Custom Element Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="test-results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Live Demo</h2>
+        <iframe src="index.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        // Test the custom element functionality
+        function runTests() {
+            const results = document.getElementById('test-results');
+            let testResults = [];
+            
+            // Test 1: Check if files load
+            fetch('index.html')
+                .then(response => {
+                    if (response.ok) {
+                        testResults.push('<div class="success">✓ index.html loads successfully</div>');
+                    } else {
+                        testResults.push('<div class="error">✗ index.html failed to load</div>');
+                    }
+                })
+                .catch(() => {
+                    testResults.push('<div class="error">✗ index.html failed to load</div>');
+                });
+            
+            // Test 2: Check if CSS loads
+            fetch('styles.css')
+                .then(response => {
+                    if (response.ok) {
+                        testResults.push('<div class="success">✓ styles.css loads successfully</div>');
+                    } else {
+                        testResults.push('<div class="error">✗ styles.css failed to load</div>');
+                    }
+                })
+                .catch(() => {
+                    testResults.push('<div class="error">✗ styles.css failed to load</div>');
+                });
+            
+            // Test 3: Check if JavaScript loads
+            fetch('script.js')
+                .then(response => {
+                    if (response.ok) {
+                        testResults.push('<div class="success">✓ script.js loads successfully</div>');
+                    } else {
+                        testResults.push('<div class="error">✗ script.js failed to load</div>');
+                    }
+                })
+                .catch(() => {
+                    testResults.push('<div class="error">✗ script.js failed to load</div>');
+                });
+            
+            // Wait a bit for all tests to complete
+            setTimeout(() => {
+                results.innerHTML = testResults.join('');
+            }, 1000);
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

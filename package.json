@@ -1,0 +1,37 @@
+{
+  "name": "kontent-ai-conditional-fields",
+  "version": "1.0.0",
+  "description": "A custom element for Kontent.ai that demonstrates conditional field functionality",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 8080 -o",
+    "build": "echo 'No build process needed - static files only'",
+    "test": "echo 'Open index.html in browser to test'",
+    "deploy": "echo 'Upload files to your web server'"
+  },
+  "keywords": [
+    "kontent-ai",
+    "custom-element",
+    "conditional-fields",
+    "cms",
+    "headless-cms",
+    "form-builder"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/kontent-ai-conditional-fields.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/kontent-ai-conditional-fields/issues"
+  },
+  "homepage": "https://github.com/your-username/kontent-ai-conditional-fields#readme",
+  "dependencies": {
+    "@kontent-ai/stylekit": "^1.0.0"
+  }
+}
+

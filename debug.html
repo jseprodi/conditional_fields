@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐛</text></svg>">
+</head>
+<body>
+    <h1>Debug Test</h1>
+    <div id="output"></div>
+    
+    <script src="config.js"></script>
+    <script>
+        console.log('Config loaded:', typeof window.CONFIG);
+        console.log('CONFIG_DATA:', typeof CONFIG_DATA);
+        document.getElementById('output').innerHTML = `
+            <p>Config loaded: ${typeof window.CONFIG}</p>
+            <p>CONFIG_DATA: ${typeof CONFIG_DATA}</p>
+            <p>CONFIG elements: ${window.CONFIG ? Object.keys(window.CONFIG.ELEMENTS || {}).length : 'undefined'}</p>
+        `;
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Fields Custom Element</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+    <link rel="stylesheet" href="node_modules/@kontent-ai/stylekit/styles/styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="custom-element">
+    <div class="container">
+        <div class="section blue">
+            <h2>Conditional Fields Demo</h2>
+            <p>Select options to see conditional fields appear/disappear</p>
+        </div>
+        
+        <form id="conditionalForm" class="form">
+            <!-- Field A: Main trigger field -->
+            <div class="field-group">
+                <label for="fieldA">What type of content are you creating?</label>
+                <select id="fieldA" name="fieldA" class="select" required>
+                    <option value="">Select an option...</option>
+                    <option value="article">Article</option>
+                    <option value="product">Product</option>
+                    <option value="event">Event</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Conditional Field B: Article-specific fields -->
+            <div id="articleFields" class="section green conditional-group" style="display: none;">
+                <h3>Article Settings</h3>
+                <div class="field-group">
+                    <label for="articleCategory">Article Category</label>
+                    <select id="articleCategory" name="articleCategory" class="select">
+                        <option value="">Select category...</option>
+                        <option value="news">News</option>
+                        <option value="tutorial">Tutorial</option>
+                        <option value="review">Review</option>
+                    </select>
+                </div>
+                
+                <div class="field-group">
+                    <label for="articleLength">Article Length</label>
+                    <select id="articleLength" name="articleLength" class="select">
+                        <option value="">Select length...</option>
+                        <option value="short">Short (300-500 words)</option>
+                        <option value="medium">Medium (500-1000 words)</option>
+                        <option value="long">Long (1000+ words)</option>
+                    </select>
+                </div>
+
+                <!-- Nested conditional: Author field for tutorials -->
+                <div id="tutorialFields" class="nested-conditional" style="display: none;">
+                    <div class="field-group">
+                        <label for="authorName">Author Name</label>
+                        <input type="text" id="authorName" name="authorName" class="input" placeholder="Enter author name">
+                    </div>
+                    <div class="field-group">
+                        <label for="authorBio">Author Bio</label>
+                        <textarea id="authorBio" name="authorBio" class="input" placeholder="Enter author biography"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conditional Field C: Product-specific fields -->
+            <div id="productFields" class="section purple conditional-group" style="display: none;">
+                <h3>Product Settings</h3>
+                <div class="field-group">
+                    <label for="productType">Product Type</label>
+                    <select id="productType" name="productType" class="select">
+                        <option value="">Select type...</option>
+                        <option value="physical">Physical Product</option>
+                        <option value="digital">Digital Product</option>
+                        <option value="service">Service</option>
+                    </select>
+                </div>
+                
+                <div class="field-group">
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" class="input" step="0.01" placeholder="0.00">
+                </div>
+
+                <!-- Nested conditional: Physical product fields -->
+                <div id="physicalProductFields" class="nested-conditional" style="display: none;">
+                    <div class="field-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" name="weight" class="input" step="0.1" placeholder="0.0">
+                    </div>
+                    <div class="field-group">
+                        <label for="dimensions">Dimensions (L x W x H)</label>
+                        <input type="text" id="dimensions" name="dimensions" class="input" placeholder="e.g., 10 x 5 x 3 cm">
+                    </div>
+                </div>
+
+                <!-- Nested conditional: Digital product fields -->
+                <div id="digitalProductFields" class="nested-conditional" style="display: none;">
+                    <div class="field-group">
+                        <label for="fileSize">File Size (MB)</label>
+                        <input type="number" id="fileSize" name="fileSize" class="input" placeholder="0">
+                    </div>
+                    <div class="field-group">
+                        <label for="downloadFormat">Download Format</label>
+                        <select id="downloadFormat" name="downloadFormat" class="select">
+                            <option value="">Select format...</option>
+                            <option value="pdf">PDF</option>
+                            <option value="zip">ZIP</option>
+                            <option value="exe">EXE</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conditional Field D: Event-specific fields -->
+            <div id="eventFields" class="section orange conditional-group" style="display: none;">
+                <h3>Event Settings</h3>
+                <div class="field-group">
+                    <label for="eventDate">Event Date</label>
+                    <input type="date" id="eventDate" name="eventDate" class="input">
+                </div>
+                
+                <div class="field-group">
+                    <label for="eventType">Event Type</label>
+                    <select id="eventType" name="eventType" class="select">
+                        <option value="">Select type...</option>
+                        <option value="conference">Conference</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="webinar">Webinar</option>
+                        <option value="meetup">Meetup</option>
+                    </select>
+                </div>
+
+                <!-- Nested conditional: Conference-specific fields -->
+                <div id="conferenceFields" class="nested-conditional" style="display: none;">
+                    <div class="field-group">
+                        <label for="venue">Venue</label>
+                        <input type="text" id="venue" name="venue" class="input" placeholder="Enter venue name">
+                    </div>
+                    <div class="field-group">
+                        <label for="capacity">Capacity</label>
+                        <input type="number" id="capacity" name="capacity" class="input" placeholder="Number of attendees">
+                    </div>
+                </div>
+
+                <!-- Nested conditional: Webinar-specific fields -->
+                <div id="webinarFields" class="nested-conditional" style="display: none;">
+                    <div class="field-group">
+                        <label for="platform">Platform</label>
+                        <select id="platform" name="platform" class="select">
+                            <option value="">Select platform...</option>
+                            <option value="zoom">Zoom</option>
+                            <option value="teams">Microsoft Teams</option>
+                            <option value="webex">Webex</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="registrationUrl">Registration URL</label>
+                        <input type="url" id="registrationUrl" name="registrationUrl" class="input" placeholder="https://...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conditional Field E: Other-specific fields -->
+            <div id="otherFields" class="section grey conditional-group" style="display: none;">
+                <h3>Custom Settings</h3>
+                <div class="field-group">
+                    <label for="customType">Custom Type</label>
+                    <input type="text" id="customType" name="customType" class="input" placeholder="Describe the content type">
+                </div>
+                <div class="field-group">
+                    <label for="customDescription">Description</label>
+                    <textarea id="customDescription" name="customDescription" class="input" placeholder="Provide additional details"></textarea>
+                </div>
+            </div>
+
+            <!-- Summary section -->
+            <div id="summary" class="section info blue summary-section" style="display: none;">
+                <h3>Configuration Summary</h3>
+                <div id="summaryContent"></div>
+            </div>
+        </form>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
