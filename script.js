@@ -79,7 +79,9 @@ class ConditionalFieldsElement {
         // Main trigger field (Field A)
         const fieldA = document.getElementById('fieldA');
         if (fieldA) {
-            fieldA.addEventListener('change', (e) => this.handleFieldAChange(e.target.value));
+            fieldA.addEventListener('change', (e) => {
+                this.handleFieldAChange(e.target.value);
+            });
         }
 
         // Article category change
@@ -143,8 +145,6 @@ class ConditionalFieldsElement {
      * Handle changes to the main trigger field (Field A)
      */
     handleFieldAChange(value) {
-        console.log('Field A changed to:', value);
-        
         // Hide all conditional groups first
         this.hideAllConditionalGroups();
         
@@ -254,14 +254,7 @@ class ConditionalFieldsElement {
     showConditionalGroup(groupId) {
         const group = document.getElementById(groupId);
         if (group) {
-            group.style.display = 'block';
             group.classList.add('visible');
-            
-            // Animate the appearance
-            setTimeout(() => {
-                group.style.opacity = '1';
-                group.style.transform = 'translateY(0)';
-            }, 10);
         }
     }
 
@@ -281,13 +274,7 @@ class ConditionalFieldsElement {
     hideConditionalGroup(groupId) {
         const group = document.getElementById(groupId);
         if (group) {
-            group.style.opacity = '0';
-            group.style.transform = 'translateY(-10px)';
-            
-            setTimeout(() => {
-                group.style.display = 'none';
-                group.classList.remove('visible');
-            }, 300);
+            group.classList.remove('visible');
         }
     }
 
@@ -297,13 +284,7 @@ class ConditionalFieldsElement {
     showNestedConditional(conditionalId) {
         const conditional = document.getElementById(conditionalId);
         if (conditional) {
-            conditional.style.display = 'block';
             conditional.classList.add('visible');
-            
-            setTimeout(() => {
-                conditional.style.opacity = '1';
-                conditional.style.transform = 'translateY(0)';
-            }, 10);
         }
     }
 
@@ -313,13 +294,7 @@ class ConditionalFieldsElement {
     hideNestedConditional(conditionalId) {
         const conditional = document.getElementById(conditionalId);
         if (conditional) {
-            conditional.style.opacity = '0';
-            conditional.style.transform = 'translateY(-10px)';
-            
-            setTimeout(() => {
-                conditional.style.display = 'none';
-                conditional.classList.remove('visible');
-            }, 300);
+            conditional.classList.remove('visible');
         }
     }
 

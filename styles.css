@@ -61,14 +61,11 @@
 
 .conditional-group {
     margin-top: 20px;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    display: none !important;
 }
 
 .conditional-group.visible {
-    opacity: 1;
-    transform: translateY(0);
+    display: block !important;
 }
 
 .conditional-group h3 {
@@ -86,14 +83,11 @@
     border-radius: 16px;
     padding: 20px;
     margin-top: 15px;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    display: none !important;
 }
 
 .nested-conditional.visible {
-    opacity: 1;
-    transform: translateY(0);
+    display: block !important;
 }
 
 .summary-section {
