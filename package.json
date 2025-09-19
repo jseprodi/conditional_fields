@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "npx http-server . -p 8080 -o",
-    "build": "echo 'No build process needed - static files only'",
+    "build": "echo 'Static files ready for deployment'",
     "test": "echo 'Open index.html in browser to test'",
     "deploy": "echo 'Upload files to your web server'"
   },
